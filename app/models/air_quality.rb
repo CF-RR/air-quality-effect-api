@@ -1,6 +1,7 @@
 class AirQuality
 
-  def initialize(location)
+  def initialize(location = nil)
+    return nil if location == nil
     @location = location.split.join("+")
     @content = HTTParty.get(
         "https://breezometer.p.mashape.com/location/?lang=en&location=#{@location}",
@@ -9,5 +10,5 @@ class AirQuality
         "Accept" => "application/json"
         }
     )
+    end
   end
-end
